@@ -1,0 +1,44 @@
+<app-dashboard></app-dashboard>
+<section>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>BANCABC</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Salary Reports</a></li>
+
+
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <div class="container">
+
+      <table #dataTable ng-if="MResults" class="table datatable" cellspacing="4" width="100%">
+        <thead class="text-info">
+          <tr>
+            <th scope="col">Batch Number</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Debit account</th>
+            <th scope="col">Beneficiary account</th>
+            <th scope="col">Status</th>
+            <th scope="col">Requested By</th>
+            <th scope="col">Date Requested</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sl of salary">
+            <td>{{ sl.batchNumber }} </td>
+            <td>{{ sl.employeeName }} </td>
+            <td>{{ sl.amount }}</td>
+            <td>{{ sl.debitaccount }}</td>
+            <td>{{ sl.beneficiaryaccount }}</td>
+            <td>{{ sl.status }}</td>
+            <td>{{ sl.user?.name }} </td>
+            <td> {{ sl.createdAt }} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</section>

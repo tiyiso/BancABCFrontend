@@ -1,0 +1,59 @@
+<app-dashboard></app-dashboard>
+<section>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>BANCABC</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Pending Salaries</a></li>
+
+
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <div class="container">
+
+      <table #dataTable ng-if="MResults" class="table datatable" cellspacing="4" width="100%">
+        <thead class="text-info">
+          <tr>
+            <!-- <th scope="col">Employee Id</th> -->
+            <th scope="col">Employee Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Status</th>
+            <th scope="col">Requested By</th>
+            <th scope="col">Date Requested</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sl of psalary">
+            <!-- <td><input type="text " value="{{ sl.id}}" name="id"> {{ sl.id }} </td> -->
+            <td>{{ sl.employeeName }} </td>
+            <td>{{ sl.amount }}</td>
+            <td>{{ sl.status }}</td>
+            <td>{{ sl.user?.name }} </td>
+            <td> {{ sl.createdAt }} </td>
+            <td>
+              <form [formGroup]="upload" (submit)="Rsalary()">
+                <div class="col-12">
+                  <!-- <select class="form-control" formControlName="status" required>
+                    <option>APPROVED</option>
+                    <option>BLOCKED</option>
+                  </select> -->
+
+                  <button type="submit" class="btn btn-primary px-4" (click)="approveSalary(sl)">APPROVE</button>
+                  &nbsp;
+                  <button type="submit" class="btn btn-danger px-4" (click)="approveSalary(sl)">REJECT</button>
+
+                </div>
+              </form>
+            </td>
+
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </main>
+</section>
